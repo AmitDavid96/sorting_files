@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+    - master
+pr:
+  branches:
+    include:
+    - '*'
+pool:
+  vmImage: 'ubuntu-latest'
+stages:
+- stage: __default
+  jobs:
+  - job: Build
+    steps:
+    - task: CmdLine@2
+      displayName: 'Unzip Custom Task'
+      inputs:
+        script: |
+          echo "Unzipping Custom Build Task"
+          unzip $(System.DefaultWorkingDirectory)/check.zip -d $(System.DefaultWorkingDirectory)/check
+    - task: CmdLine@2
+      displayName: 'Run Custom Task'
+      inputs:
+        script: |
+          echo "Running Custom Build Task"
+
+          index.ts $(System.DefaultWorkingDirectory)/task/new_create/task.json
+    - task: CmdLine@2
+      displayName: 'Compile C Project'
+      inputs:
+        script: |
+          echo "Compiling C Project"
+          gcc -o SortApp sort_1.c
+
