@@ -1,0 +1,27 @@
+bson.M{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "contentVersion": "1.0.0.0",
+  "id": "cmn69HYzAUqS/FmoZQ2Wkg==",
+  "name": "AssemblyInfoUpdater",
+  "friendlyName": "Update Assembly Info",
+  "description": "",
+  "author": "AmitDavid",
+  "helpMarkDown": "",
+  "version": bson.M{
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0,
+  },
+  "inputs": bson.A{},
+  "execution": bson.M{
+    "Bash": bson.M{
+      "target": "assemblyInfoUpdater.sh",
+      "workingDirectory": "$(System.DefaultWorkingDirectory)",
+    },
+  },
+  "instanceNameFormat": "Update Assembly Info",
+  "groups": bson.A{
+    "Build",
+  },
+  "category": "Build",
+}
